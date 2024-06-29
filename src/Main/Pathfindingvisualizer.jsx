@@ -68,8 +68,10 @@ export default class PathfindingVisualizer extends Component {
       }
       setTimeout(() => {
         const node = visitedNodesInOrder[i];
-        document.getElementById(`node-${node.row}-${node.col}`).className =
-          "node node-visited";
+        const nodeElement = document.getElementById(`node-${node.row}-${node.col}`);
+        if (!node.isStart && !node.isFinish) {
+          nodeElement.className = "node node-visited";
+        }
       }, 10 * i);
     }
   }
